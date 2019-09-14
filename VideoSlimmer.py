@@ -279,7 +279,7 @@ def audio_tracks(mkvmerge_info_stdout_uni):
     media_metadata = json.loads(mkvmerge_info_stdout_uni)
 
     # search for audio tracks using regex
-    for track in media_metadata['tracks']:
+    for track in media_metadata.get('tracks', []):
         if track['type'] == 'audio':
             print track['properties']['language']
             audio_track_list.append(track)
@@ -338,7 +338,7 @@ def subtitle_tracks(mkvmerge_info_stdout_uni):
     media_metadata = json.loads(mkvmerge_info_stdout_uni)
 
     # search for subtitle tracks using regex
-    for track in media_metadata['tracks']:
+    for track in media_metadata.get('tracks', []):
         if track['type'] == 'subtitles':
             subtitle_track_list.append(track)
 
